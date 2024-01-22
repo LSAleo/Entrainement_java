@@ -34,4 +34,17 @@ public class Joueur {
         this.dateDeNaissance = dateDeNaissance;
     }
 
+    public ArrayList<Carte> getMain() {
+        return main;
+    }
+
+    public void setMain(ArrayList<Carte> main) {
+        this.main = main;
+    }
+
+    @Override
+    public String toString() {
+        return "Joueur [prenom=" + prenom + ", dateDeNaissance=" + dateDeNaissance + ", main=" + main + "]";
+    }
+
 }

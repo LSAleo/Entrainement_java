@@ -56,7 +56,7 @@ public class Carte {
 
     @Override
     public String toString() {
-        return "Carte [nom=" + nom + ", valeur=" + valeur + ", couleur=" + couleur + "]";
+        return nom + " de " + couleur.getNom();
     }
     
 }

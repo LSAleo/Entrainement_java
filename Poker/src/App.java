@@ -6,6 +6,7 @@ public class App {
         ArrayList<Couleur> couleurs = new ArrayList<>();
         ArrayList<Carte> cartes = new ArrayList<>();
         ArrayList<Joueur> joueurs = new ArrayList<>();
+        int[] tableauDOccurrences = new int[15];
 
         Joueur joueur1 = new Joueur("Alexandre", LocalDate.of(2004,06,01));
         Joueur joueur2 = new Joueur("Corentin");
@@ -39,8 +40,45 @@ public class App {
         }
         Collections.shuffle(cartes);
 
-        for (Carte carte : cartes) {
-            System.out.println(carte);
+        // for (Carte carte : cartes) {
+        //     System.out.println(carte);
+        // }
+
+        for (Joueur joueur : joueurs) {
+            for (int i = 0; i < 5; i++) {
+                joueur.getMain().add(cartes.remove(0));
+            }
+        }
+        for (Joueur joueur : joueurs) {
+            System.out.println(joueur);
+        }
+
+        boolean possedeCarre = false;
+        boolean possedeBrelan = false;
+        boolean possedePaire = false;
+        boolean possedeFull = false;
+        boolean possedeDoublePaire = false;
+        int nbPaires = 0;
+        for (Carte carte : joueurs.get(0).getMain()) {
+            tableauDOccurrences[carte.getValeur()]++;
+        }
+        
+        for (int i = 0; i < tableauDOccurrences.length; i++) {
+            System.out.println(tableauDOccurrences[i]);
+            if (tableauDOccurrences[i] == 4) {
+                possedeCarre = true;
+                System.out.println("Possede un carré" + possedeCarre);
+            }else if (tableauDOccurrences[i] == 3) {
+                possedeBrelan = true;
+
+            }else if (tableauDOccurrences[i] == 2) {
+                possedePaire = true;
+                nbPaires = nbPaires + 1;
+            }else if (possedePaire == true && possedeBrelan == true) {
+                possedeFull = true;
+            }else if (nbPaires == 2) {
+                possedeDoublePaire = true;
+            }
         }
     }
 }
