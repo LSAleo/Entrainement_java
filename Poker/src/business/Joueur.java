@@ -1,9 +1,11 @@
 package business;
 
+import java.util.*;
 import java.time.LocalDate;
 public class Joueur {
     private String prenom;
     private LocalDate dateDeNaissance;
+    private ArrayList<Carte> main = new ArrayList<>();
     
     // Constructeur
     

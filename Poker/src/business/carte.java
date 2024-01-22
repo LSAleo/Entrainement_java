@@ -1,13 +1,31 @@
 package business;
 
-public class carte {
+public class Carte {
     private String nom;
 
     private int valeur;
 
     private Couleur couleur;
 
-    public carte(int valeur, Couleur couleur) {
+    public Carte(int valeur, Couleur couleur) {
+        // le nom dépend de la valeur
+        switch (valeur) {
+            case 11:
+                nom = "Valet";
+                break;
+            case 12:
+                nom = "Dame";
+                break;
+            case 13:
+                nom = "Roi";
+                break;
+            case 14:
+                nom = "As";
+                break;
+            default:
+                nom = String.valueOf(valeur);
+                break;
+        }
         this.valeur = valeur;
         this.couleur = couleur;
     }
@@ -34,6 +52,11 @@ public class carte {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    @Override
+    public String toString() {
+        return "Carte [nom=" + nom + ", valeur=" + valeur + ", couleur=" + couleur + "]";
     }
     
 }
