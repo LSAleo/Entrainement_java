@@ -55,20 +55,27 @@ public class App {
                 cartes.add(new Carte(i, couleur));
             }
         }
+
+
         Collections.shuffle(cartes);
 
         // for (Carte carte : cartes) {
         //     System.out.println(carte);
         // }
 
-        for (Joueur joueur : joueurs) {
-            for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
+            /*for (Joueur joueur : joueurs) {
                 joueur.getMain().add(cartes.remove(0));
-            }
+            }*/
+            joueurs.get(0).getMain().add(cartes.remove(0));
         }
         /*
         for (Joueur joueur : joueurs) {
             System.out.println(joueur);
+        } 
+
+        for (Couleur couleur : couleurs) {
+            System.out.println(couleur);
         } */
 
         boolean possedeCarre = false;
@@ -76,9 +83,24 @@ public class App {
         boolean possedePaire = false;
         boolean possedeFull = false;
         boolean possedeDoublePaire = false;
+        boolean possedeCouleur = false;
         int nbPaires = 0;
+        
         for (Carte carte : joueurs.get(0).getMain()) {
             tableauDOccurrences[carte.getValeur()]++;
+        }
+
+        for (Couleur couleur : couleurs) {
+            int nbCarteCouleur = 0;
+            for (Carte carte : joueurs.get(0).getMain()) {
+                if (carte.getCouleur().equals(couleur)) {
+                    nbCarteCouleur++;
+                }
+            }
+            if (nbCarteCouleur == 5) {
+                possedeCouleur = true;
+                break;
+            }
         }
         
         for (int i = 0; i < tableauDOccurrences.length; i++) {
@@ -105,11 +127,14 @@ public class App {
         if (possedeBrelan == true && nbPaires == 0) {
             System.out.println("Possède un brelan");
         }
-        if (possedeBrelan == true && possedePaire == true) {
+        if (possedeBrelan == true && possedePaire == true && possedeFull == true) {
             System.out.println("Possède un full");
         }
         if (possedeCarre == true) {
             System.out.println("Possède un carré");
+        }
+        if (possedeCouleur == true) {
+            System.out.println("Possède une couleur");
         }
     }
 }
