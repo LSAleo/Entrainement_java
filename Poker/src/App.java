@@ -57,7 +57,7 @@ public class App {
         }
 
 
-        Collections.shuffle(cartes);
+        // Collections.shuffle(cartes);
 
         // for (Carte carte : cartes) {
         //     System.out.println(carte);
@@ -84,7 +84,19 @@ public class App {
         boolean possedeFull = false;
         boolean possedeDoublePaire = false;
         boolean possedeCouleur = false;
+
         int nbPaires = 0;
+
+        List<Carte> mainJoueur = joueurs.get(0).getMain();
+        boolean possedeSuite = false;
+
+        Collections.sort(mainJoueur, Comparator.comparingInt(Carte::getValeur));
+        for (int i = 0; i < mainJoueur.size()-1; i++) {
+            if (mainJoueur.get(i).getValeur() +1 == mainJoueur.get(i+1).getValeur() ){
+                possedeSuite = true;
+            }
+ 
+        }
         
         for (Carte carte : joueurs.get(0).getMain()) {
             tableauDOccurrences[carte.getValeur()]++;
@@ -133,8 +145,14 @@ public class App {
         if (possedeCarre == true) {
             System.out.println("Possède un carré");
         }
-        if (possedeCouleur == true) {
+        if (possedeCouleur == true && !possedeSuite) {
             System.out.println("Possède une couleur");
+        }
+        if (possedeSuite == true  && !possedeCouleur) {
+            System.out.println("Possède une suite");
+        }
+        if (possedeCouleur == true && possedeSuite == true) {
+            System.out.println("Possède une quinte flush");
         }
     }
 }
