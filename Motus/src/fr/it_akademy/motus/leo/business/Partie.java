@@ -13,6 +13,12 @@ public class Partie {
         id = ++compteur;
     }
 
+    public Partie(LocalDateTime dateHeureDebut, Mot mot, ArrayList<Essai> essais) {
+        this.dateHeureDebut = dateHeureDebut;
+        this.mot = mot;
+        this.essais = essais;
+    }
+
     public Partie(LocalDateTime dateHeureDebut) {
         this();
         this.dateHeureDebut = dateHeureDebut;
@@ -23,10 +29,17 @@ public class Partie {
         this.mot = mot;
     }
 
+    public ArrayList<Essai> getEssais() {
+        return essais;
+    }
+
+    public void setEssais(ArrayList<Essai> essais) {
+        this.essais = essais;
+    }
+
     public Partie(LocalDateTime dateHeureDebut, Mot mot, Essai essai) {
         this.dateHeureDebut = dateHeureDebut;
         this.mot = mot;
-        this.essai = essai;
     }
 
     public Long getId() {
@@ -61,17 +74,8 @@ public class Partie {
         this.mot = mot;
     }
 
-    public Essai getEssai() {
-        return essai;
-    }
-
-    public void setEssai(Essai essai) {
-        this.essai = essai;
-    }
-
     @Override
     public String toString() {
-        return "Partie [id=" + id + ", dateHeureDebut=" + dateHeureDebut + ", mot=" + mot + ", essai=" + essai + "]";
+        return "Partie [id=" + id + ", dateHeureDebut=" + dateHeureDebut + ", mot=" + mot + ", essais=" + essais + "]";
     }
-
 }
