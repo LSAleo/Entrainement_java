@@ -25,12 +25,12 @@ public class App {
         }
 
    
-    }
+    }/*
     private static void afficherCartes() {
         for (Carte carte : cartes) {
             System.out.println(carte);
         }
-    }
+    } */
     private static void analyserMain(Joueur joueur) {
 
         int[] tableauDOccurrences = new int[15];
@@ -93,6 +93,7 @@ public class App {
         if (possedeCouleur == true && possedeSuite == true && valeurMax == 14) {
             System.out.println("Possède une quinte flush royale");
         }else
+
         if (possedeCouleur == true && possedeSuite == true) {
             System.out.println("Possède une quinte flush");
         }else
