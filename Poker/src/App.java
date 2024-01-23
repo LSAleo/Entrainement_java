@@ -6,15 +6,32 @@ public class App {
         ArrayList<Couleur> couleurs = new ArrayList<>();
         ArrayList<Carte> cartes = new ArrayList<>();
         ArrayList<Joueur> joueurs = new ArrayList<>();
+        ArrayList<Ville> villes = new ArrayList<>();
         int[] tableauDOccurrences = new int[15];
 
+        Ville ville1 = new Ville("Les Sauvages","69170");
+        Ville ville2 = new Ville("Neuville","69250");
+        Ville ville3 = new Ville("Saint-Galmier","42330");
+        Ville ville4 = new Ville("Francheville","69340");
+        Ville ville5 = new Ville("Anthon","38280");
+        villes.add(ville1);
+        villes.add(ville2);
+        villes.add(ville3);
+        villes.add(ville4);
+        villes.add(ville5);
+
         Joueur joueur1 = new Joueur("Alexandre", LocalDate.of(2004,06,01));
+        joueur1.setVille(ville5);
         Joueur joueur2 = new Joueur("Corentin");
+        joueur2.setVille(ville4);
         Joueur joueur3 = new Joueur("Léo");
         joueur3.setDateDeNaissance(LocalDate.of(2004,06,26));
+        joueur3.setVille(ville1);
         Joueur joueur4 = new Joueur("Sofiane");
         joueur4.setDateDeNaissance(LocalDate.of(1997,11,28));
+        joueur4.setVille(ville2);
         Joueur joueur5 = new Joueur("Fx");
+        joueur5.setVille(ville3);
 
         joueurs.add(joueur1);
         joueurs.add(joueur2);
@@ -49,9 +66,10 @@ public class App {
                 joueur.getMain().add(cartes.remove(0));
             }
         }
+        /*
         for (Joueur joueur : joueurs) {
             System.out.println(joueur);
-        }
+        } */
 
         boolean possedeCarre = false;
         boolean possedeBrelan = false;
@@ -67,20 +85,31 @@ public class App {
             System.out.println(tableauDOccurrences[i]);
             if (tableauDOccurrences[i] == 4) {
                 possedeCarre = true;
-                System.out.println("Possede un carré" + possedeCarre);
-            }else if (tableauDOccurrences[i] == 3) {
+            }else if (tableauDOccurrences[i] == 3 && nbPaires == 0) {
                 possedeBrelan = true;
-
             }else if (tableauDOccurrences[i] == 2) {
-                possedePaire = true;
                 nbPaires = nbPaires + 1;
-            }else if (possedePaire == true && possedeBrelan == true) {
+            }else if (nbPaires == 1 && possedeBrelan == true) {
                 possedeFull = true;
             }else if (nbPaires == 2) {
                 possedeDoublePaire = true;
             }
         }
 
-        
+        if (nbPaires == 1 && possedeBrelan == false){
+            System.out.println("Possède une paire");
+        }
+        if (possedeDoublePaire == true) {
+            System.out.println("Possède une double paire");
+        }
+        if (possedeBrelan == true && nbPaires == 0) {
+            System.out.println("Possède un brelan");
+        }
+        if (possedeBrelan == true && possedePaire == true) {
+            System.out.println("Possède un full");
+        }
+        if (possedeCarre == true) {
+            System.out.println("Possède un carré");
+        }
     }
 }

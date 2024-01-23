@@ -1,11 +1,12 @@
 package business;
-
 import java.util.*;
 import java.time.LocalDate;
+
 public class Joueur {
     private String prenom;
     private LocalDate dateDeNaissance;
     private ArrayList<Carte> main = new ArrayList<>();
+    private Ville ville;
     
     // Constructeur
     
@@ -16,6 +17,12 @@ public class Joueur {
     public Joueur(String prenom, LocalDate dateDeNaissance) {
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
+    }
+
+    public Joueur(String prenom, LocalDate dateDeNaissance, Ville ville) {
+        this.prenom = prenom;
+        this.dateDeNaissance = dateDeNaissance;
+        this.ville = ville;
     }
 
     public String getPrenom() {
@@ -41,10 +48,17 @@ public class Joueur {
     public void setMain(ArrayList<Carte> main) {
         this.main = main;
     }
+    
+    public Ville getVille() {
+        return ville;
+    }
+
+    public void setVille(Ville ville) {
+        this.ville = ville;
+    }
 
     @Override
     public String toString() {
-        return "Joueur [prenom=" + prenom + ", dateDeNaissance=" + dateDeNaissance + ", main=" + main + "]";
+        return "Joueur [prenom=" + prenom + ", dateDeNaissance=" + dateDeNaissance + ", main=" + main + ", ville=" + ville + "]";
     }
-
 }
