@@ -1,12 +1,13 @@
 package fr.it_akademy.motus.leo.business;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Partie {
     private Long id;
     private LocalDateTime dateHeureDebut;
     private static Long compteur = 0L;
     private Mot mot;
-    private Essai essai;
+    private ArrayList<Essai> essais = new ArrayList<>();
 
     public Partie() {
         id = ++compteur;
