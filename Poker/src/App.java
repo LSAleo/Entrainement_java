@@ -2,81 +2,37 @@ import business.*;
 import java.time.LocalDate;
 import java.util.*;
 public class App {
+
+    private static ArrayList<Ville> villes = new ArrayList<>();
+    private static ArrayList<Joueur> joueurs = new ArrayList<>();
+    private static ArrayList<Couleur> couleurs = new ArrayList<>();
+    private static ArrayList<Carte> cartes = new ArrayList<>();
+
     public static void main(String[] args) throws Exception {
-        ArrayList<Couleur> couleurs = new ArrayList<>();
-        ArrayList<Carte> cartes = new ArrayList<>();
-        ArrayList<Joueur> joueurs = new ArrayList<>();
-        ArrayList<Ville> villes = new ArrayList<>();
+    
+
+        ajouterVilles();
+        ajouterJoueurs();
+        ajouterCouleurs();
+        ajouterCartes();
+        afficherCartes();
+        melangerCartes();
+        distribuerCartes();
+
+        for (Joueur joueur : joueurs){
+            analyserMain(joueur);
+        }
+
+   
+    }
+    private static void afficherCartes() {
+        for (Carte carte : cartes) {
+            System.out.println(carte);
+        }
+    }
+    private static void analyserMain(Joueur joueur) {
+
         int[] tableauDOccurrences = new int[15];
-
-        Ville ville1 = new Ville("Les Sauvages","69170");
-        Ville ville2 = new Ville("Neuville","69250");
-        Ville ville3 = new Ville("Saint-Galmier","42330");
-        Ville ville4 = new Ville("Francheville","69340");
-        Ville ville5 = new Ville("Anthon","38280");
-        villes.add(ville1);
-        villes.add(ville2);
-        villes.add(ville3);
-        villes.add(ville4);
-        villes.add(ville5);
-
-        Joueur joueur1 = new Joueur("Alexandre", LocalDate.of(2004,06,01));
-        joueur1.setVille(ville5);
-        Joueur joueur2 = new Joueur("Corentin");
-        joueur2.setVille(ville4);
-        Joueur joueur3 = new Joueur("Léo");
-        joueur3.setDateDeNaissance(LocalDate.of(2004,06,26));
-        joueur3.setVille(ville1);
-        Joueur joueur4 = new Joueur("Sofiane");
-        joueur4.setDateDeNaissance(LocalDate.of(1997,11,28));
-        joueur4.setVille(ville2);
-        Joueur joueur5 = new Joueur("Fx");
-        joueur5.setVille(ville3);
-
-        joueurs.add(joueur1);
-        joueurs.add(joueur2);
-        joueurs.add(joueur3);
-        joueurs.add(joueur4);
-        joueurs.add(joueur5);
-
-        Couleur couleur1 = new Couleur("Coeur");
-        Couleur couleur2 = new Couleur("Pique");
-        Couleur couleur3 = new Couleur("Carreau");
-        Couleur couleur4 = new Couleur("Trèfle");
-
-        couleurs.add(couleur1);
-        couleurs.add(couleur2);
-        couleurs.add(couleur3);
-        couleurs.add(couleur4);
-
-        for (Couleur couleur : couleurs) {
-
-            for (int i = 2; i <= 14 ; i++) {
-                cartes.add(new Carte(i, couleur));
-            }
-        }
-
-
-        // Collections.shuffle(cartes);
-
-        // for (Carte carte : cartes) {
-        //     System.out.println(carte);
-        // }
-
-        for (int i = 0; i < 5; i++) {
-            /*for (Joueur joueur : joueurs) {
-                joueur.getMain().add(cartes.remove(0));
-            }*/
-            joueurs.get(0).getMain().add(cartes.remove(0));
-        }
-        /*
-        for (Joueur joueur : joueurs) {
-            System.out.println(joueur);
-        } 
-
-        for (Couleur couleur : couleurs) {
-            System.out.println(couleur);
-        } */
 
         boolean possedeCarre = false;
         boolean possedeBrelan = false;
@@ -154,5 +110,72 @@ public class App {
         if (possedeCouleur == true && possedeSuite == true) {
             System.out.println("Possède une quinte flush");
         }
+    }
+
+    private static void distribuerCartes() {
+        for (int i = 0; i < 5; i++) {
+            for (Joueur joueur : joueurs) {
+                joueur.getMain().add(cartes.remove(0));
+            }
+        }
+    }
+
+    private static void melangerCartes() {
+        Collections.shuffle(cartes);
+    }
+
+    private static void ajouterCartes() {
+        for (Couleur couleur : couleurs) {
+
+            for (int i = 2; i <= 14 ; i++) {
+                cartes.add(new Carte(i, couleur));
+            }
+        }
+    }
+
+    private static void ajouterCouleurs() {
+        Couleur couleur1 = new Couleur("Coeur");
+        Couleur couleur2 = new Couleur("Pique");
+        Couleur couleur3 = new Couleur("Carreau");
+        Couleur couleur4 = new Couleur("Trèfle");
+
+        couleurs.add(couleur1);
+        couleurs.add(couleur2);
+        couleurs.add(couleur3);
+        couleurs.add(couleur4);
+    }
+
+    private static void ajouterJoueurs() {
+        Joueur joueur1 = new Joueur("Alexandre", LocalDate.of(2004,06,01));
+        joueur1.setVille(villes.get(5));
+        Joueur joueur2 = new Joueur("Corentin");
+        joueur2.setVille(villes.get(4));
+        Joueur joueur3 = new Joueur("Léo");
+        joueur3.setDateDeNaissance(LocalDate.of(2004,06,26));
+        joueur3.setVille(villes.get(1));
+        Joueur joueur4 = new Joueur("Sofiane");
+        joueur4.setDateDeNaissance(LocalDate.of(1997,11,28));
+        joueur4.setVille(villes.get(2));
+        Joueur joueur5 = new Joueur("Fx");
+        joueur5.setVille(villes.get(3));
+
+        joueurs.add(joueur1);
+        joueurs.add(joueur2);
+        joueurs.add(joueur3);
+        joueurs.add(joueur4);
+        joueurs.add(joueur5);
+    }
+
+    private static void ajouterVilles() {
+        Ville ville1 = new Ville("Les Sauvages","69170");
+        Ville ville2 = new Ville("Neuville","69250");
+        Ville ville3 = new Ville("Saint-Galmier","42330");
+        Ville ville4 = new Ville("Francheville","69340");
+        Ville ville5 = new Ville("Anthon","38280");
+        villes.add(ville1);
+        villes.add(ville2);
+        villes.add(ville3);
+        villes.add(ville4);
+        villes.add(ville5);
     }
 }
