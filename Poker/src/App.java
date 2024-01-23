@@ -92,7 +92,7 @@ public class App {
         }
         if (possedeCouleur == true && possedeSuite == true && valeurMax == 14) {
             System.out.println("Possède une quinte flush royale");
-        }
+        }else
         if (possedeCouleur == true && possedeSuite == true) {
             System.out.println("Possède une quinte flush");
         }else
