@@ -5,6 +5,8 @@ public class Partie {
     private Long id;
     private LocalDateTime dateHeureDebut;
     private static Long compteur = 0L;
+    private Mot mot;
+    private Essai essai;
 
     public Partie() {
         id = ++compteur;
@@ -13,6 +15,17 @@ public class Partie {
     public Partie(LocalDateTime dateHeureDebut) {
         this();
         this.dateHeureDebut = dateHeureDebut;
+    }
+
+    public Partie(LocalDateTime dateHeureDebut, Mot mot) {
+        this.dateHeureDebut = dateHeureDebut;
+        this.mot = mot;
+    }
+
+    public Partie(LocalDateTime dateHeureDebut, Mot mot, Essai essai) {
+        this.dateHeureDebut = dateHeureDebut;
+        this.mot = mot;
+        this.essai = essai;
     }
 
     public Long getId() {
@@ -39,8 +52,25 @@ public class Partie {
         Partie.compteur = compteur;
     }
 
+    public Mot getMot() {
+        return mot;
+    }
+
+    public void setMot(Mot mot) {
+        this.mot = mot;
+    }
+
+    public Essai getEssai() {
+        return essai;
+    }
+
+    public void setEssai(Essai essai) {
+        this.essai = essai;
+    }
+
     @Override
     public String toString() {
-        return "Partie [id=" + id + ", dateHeureDebut=" + dateHeureDebut + "]";
+        return "Partie [id=" + id + ", dateHeureDebut=" + dateHeureDebut + ", mot=" + mot + ", essai=" + essai + "]";
     }
+
 }

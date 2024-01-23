@@ -6,6 +6,7 @@ public class Essai {
     private String contenu;
     private LocalDateTime dateHeureEnvoi;
     private static Long compteur = 0L;
+    private Partie partie;
 
     public Essai() {
         id = ++compteur;
@@ -15,6 +16,12 @@ public class Essai {
         this();
         this.contenu = contenu;
         this.dateHeureEnvoi = dateHeureEnvoi;
+    }
+
+    public Essai(String contenu, LocalDateTime dateHeureEnvoi, Partie partie) {
+        this.contenu = contenu;
+        this.dateHeureEnvoi = dateHeureEnvoi;
+        this.partie = partie;
     }
 
     public Long getId() {
@@ -49,9 +56,16 @@ public class Essai {
         Essai.compteur = compteur;
     }
 
+    public Partie getPartie() {
+        return partie;
+    }
+
+    public void setPartie(Partie partie) {
+        this.partie = partie;
+    }
+
     @Override
     public String toString() {
-        return "Essai [id=" + id + ", contenu=" + contenu + ", dateHeureEnvoi=" + dateHeureEnvoi + "]";
+        return "Essai [id=" + id + ", contenu=" + contenu + ", dateHeureEnvoi=" + dateHeureEnvoi + ", partie=" + partie + "]";
     }
-    
 }
