@@ -15,11 +15,12 @@ public class App {
         ajouterJoueurs();
         ajouterCouleurs();
         ajouterCartes();
-        afficherCartes();
+        // afficherCartes();
         melangerCartes();
         distribuerCartes();
 
         for (Joueur joueur : joueurs){
+            System.out.println(joueur.getPrenom() + joueur.getMain() + " : ");
             analyserMain(joueur);
         }
 
@@ -43,24 +44,28 @@ public class App {
 
         int nbPaires = 0;
 
-        List<Carte> mainJoueur = joueurs.get(0).getMain();
-        boolean possedeSuite = false;
+        List<Carte> mainJoueur = joueur.getMain();
+        boolean possedeSuite = true;
 
         Collections.sort(mainJoueur, Comparator.comparingInt(Carte::getValeur));
-        for (int i = 0; i < mainJoueur.size()-1; i++) {
-            if (mainJoueur.get(i).getValeur() +1 == mainJoueur.get(i+1).getValeur() ){
-                possedeSuite = true;
-            }
- 
-        }
+                int valeurMax = mainJoueur.get(mainJoueur.size()-1).getValeur();
+                for (int i = 0; i < mainJoueur.size()-1; i++) {
+                    //System.out.println("On compare la case " + i + " avec la case " + (i+1));
+                    // On vérifie que la valeur de la carte à la position i est égale
+                    // à la valeur de la carte suivante -1
+                    if (mainJoueur.get(i).getValeur() != mainJoueur.get(i+1).getValeur() -1 ){
+                        possedeSuite = false;
+                    }
+         
+                }
         
-        for (Carte carte : joueurs.get(0).getMain()) {
+        for (Carte carte : joueur.getMain()) {
             tableauDOccurrences[carte.getValeur()]++;
         }
 
         for (Couleur couleur : couleurs) {
             int nbCarteCouleur = 0;
-            for (Carte carte : joueurs.get(0).getMain()) {
+            for (Carte carte : joueur.getMain()) {
                 if (carte.getCouleur().equals(couleur)) {
                     nbCarteCouleur++;
                 }
@@ -72,7 +77,7 @@ public class App {
         }
         
         for (int i = 0; i < tableauDOccurrences.length; i++) {
-            System.out.println(tableauDOccurrences[i]);
+            // System.out.println(tableauDOccurrences[i]);
             if (tableauDOccurrences[i] == 4) {
                 possedeCarre = true;
             }else if (tableauDOccurrences[i] == 3 && nbPaires == 0) {
@@ -85,30 +90,41 @@ public class App {
                 possedeDoublePaire = true;
             }
         }
-
-        if (nbPaires == 1 && possedeBrelan == false){
-            System.out.println("Possède une paire");
-        }
-        if (possedeDoublePaire == true) {
-            System.out.println("Possède une double paire");
-        }
-        if (possedeBrelan == true && nbPaires == 0) {
-            System.out.println("Possède un brelan");
-        }
-        if (possedeBrelan == true && possedePaire == true && possedeFull == true) {
-            System.out.println("Possède un full");
-        }
-        if (possedeCarre == true) {
-            System.out.println("Possède un carré");
-        }
-        if (possedeCouleur == true && !possedeSuite) {
-            System.out.println("Possède une couleur");
-        }
-        if (possedeSuite == true  && !possedeCouleur) {
-            System.out.println("Possède une suite");
+        if (possedeCouleur == true && possedeSuite == true && valeurMax == 14) {
+            System.out.println("Possède une quinte flush royale");
         }
         if (possedeCouleur == true && possedeSuite == true) {
             System.out.println("Possède une quinte flush");
+        }else
+
+        if (possedeCarre == true) {
+            System.out.println("Possède un carré");
+        }else
+
+        if (possedeBrelan == true && possedePaire == true && possedeFull == true) {
+            System.out.println("Possède un full");
+        }else
+
+        if (possedeCouleur == true && !possedeSuite) {
+            System.out.println("Possède une couleur");
+        }else
+
+        if (possedeSuite == true  && !possedeCouleur) {
+            System.out.println("Possède une suite");
+        }else
+
+        if (possedeBrelan == true && nbPaires == 0) {
+            System.out.println("Possède un brelan");
+        }else
+        
+        if (possedeDoublePaire == true) {
+            System.out.println("Possède une double paire");
+        }else
+
+        if (nbPaires == 1 && possedeBrelan == false){
+            System.out.println("Possède une paire");
+        }else{
+            System.out.println("Aucune combinaison");
         }
     }
 
@@ -147,17 +163,17 @@ public class App {
 
     private static void ajouterJoueurs() {
         Joueur joueur1 = new Joueur("Alexandre", LocalDate.of(2004,06,01));
-        joueur1.setVille(villes.get(5));
+        joueur1.setVille(villes.get(4));
         Joueur joueur2 = new Joueur("Corentin");
-        joueur2.setVille(villes.get(4));
+        joueur2.setVille(villes.get(3));
         Joueur joueur3 = new Joueur("Léo");
         joueur3.setDateDeNaissance(LocalDate.of(2004,06,26));
-        joueur3.setVille(villes.get(1));
+        joueur3.setVille(villes.get(0));
         Joueur joueur4 = new Joueur("Sofiane");
         joueur4.setDateDeNaissance(LocalDate.of(1997,11,28));
-        joueur4.setVille(villes.get(2));
+        joueur4.setVille(villes.get(1));
         Joueur joueur5 = new Joueur("Fx");
-        joueur5.setVille(villes.get(3));
+        joueur5.setVille(villes.get(2));
 
         joueurs.add(joueur1);
         joueurs.add(joueur2);
