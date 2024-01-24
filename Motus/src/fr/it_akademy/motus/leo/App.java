@@ -12,9 +12,11 @@ public class App {
 
     public static void main(String[] args) {
         ajouterMots();
-        choisirMots();
         Partie partieEnCours = ajouterPartie();
-        demanderMot(partieEnCours);
+
+        while (demanderMot(partieEnCours)) {
+            // rien à mettre
+        }
     }
 
     private static Partie ajouterPartie() {
@@ -23,8 +25,13 @@ public class App {
         return partie;
     }
 
-    private static void demanderMot(Partie partie) {
-        System.out.println("Essai 1 : ");
+    private static boolean demanderMot(Partie partie) {
+        if (partie.getEssais().size() >= 6) {
+            System.out.println("Perdu");
+            return false;
+        }
+
+        System.out.println("Essai " + (partie.getEssais().size()+1) + " : ");
         String motSaisi = scanner.nextLine();
         Essai essai = new Essai(motSaisi, partie);
         // On ajoute un nouvel essai à la partie donnée en paramètre
@@ -32,6 +39,7 @@ public class App {
         if (motSaisi.equals(partie.getMot().getNom())) {
             System.out.println("Bravo !");
         }
+        return true;
     }
 
     /* 
