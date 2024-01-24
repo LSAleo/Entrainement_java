@@ -5,11 +5,41 @@ import java.util.*;
 
 public class App {
 
+    private static int motAleatoire = 0 ;
     private static ArrayList<Mot> mots = new ArrayList<>();
+    static Random random = new Random();
 
     public static void main(String[] args) {
         ajouterMots();
+        choisirMots();
+        demanderMot();
     }
+
+    private static void demanderMot() {
+
+    }
+
+    /* 
+    private static void choisirMots() {
+
+        motAleatoire = 1 + random.nextInt(10);
+
+        for (Mot mot : mots) {
+            if (mot.getId() == motAleatoire) {
+                System.out.println("Mot choisi : " + mot.getMot());
+                break;
+            }
+        }
+    } 
+    */
+    private static void choisirMots() {
+        motAleatoire = 1 + random.nextInt(10);
+        motAleatoire = random.nextInt(mots.size()); // Génère un indice aléatoire dans la plage des indices des mots
+        Mot motChoisi = mots.get(motAleatoire);
+
+        System.out.println("Mot choisi : " + motChoisi.getMot());
+    }
+
 
     private static void ajouterMots() {
         mots.add(new Mot("piscine"));

@@ -42,4 +42,8 @@ public class Mot {
     public String toString() {
         return "Mot [id=" + id + ", nom=" + nom + "]";
     }
+
+    public String getMot() {
+        return nom;
+    }
 }
