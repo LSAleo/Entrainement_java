@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "Motus/src",
+        "Jeux/src/fr/it_akademy/jeux",
+        "Jeux/src",
+        ""
+    ]
+}

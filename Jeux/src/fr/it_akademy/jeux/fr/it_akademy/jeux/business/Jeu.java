@@ -91,7 +91,7 @@ public class Jeu {
 
     @Override
     public String toString() {
-        return "nom=" + nom + ", dateSortie=" + dateSortie + ", editeur=" + editeur + ", plateformes=" + plateformes;
+        return "nom= " + nom + ", dateSortie= " + dateSortie + ", editeur= " + editeur + ", plateformes= " + plateformes;
     }
     //  id=" + id + ",
 }

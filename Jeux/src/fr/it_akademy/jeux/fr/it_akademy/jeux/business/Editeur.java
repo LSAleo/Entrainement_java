@@ -48,7 +48,7 @@ public class Editeur {
 
     @Override
     public String toString() {
-        return "nom=" + nom ;
+        return nom ;
     }
     // [id=" + id + ", + ", jeux=" + jeux + "]"
 }
