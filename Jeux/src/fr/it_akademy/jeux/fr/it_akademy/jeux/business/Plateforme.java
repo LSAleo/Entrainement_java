@@ -8,9 +8,19 @@ public class Plateforme {
     private ArrayList<Jeu> jeux = new ArrayList<>();
     private static Long compteur = 0L;
 
+    // constructeur par défaut
+
     public Plateforme() {
         id = ++compteur;
     }
+    
+    // constructeur avec 1 paramètre
+
+    public Plateforme(String nom) {
+        this.nom = nom;
+    }
+
+    // constructeur avec 2 paramètres
 
     public Plateforme(String nom, ArrayList<Jeu> jeux) {
         this();
@@ -52,7 +62,7 @@ public class Plateforme {
 
     @Override
     public String toString() {
-        return "Plateforme [id=" + id + ", nom=" + nom + ", jeux=" + jeux + "]";
+        return "nom=" + nom ;
     }
-
+    // [id=" + id + ", , jeux=" + jeux;
 }

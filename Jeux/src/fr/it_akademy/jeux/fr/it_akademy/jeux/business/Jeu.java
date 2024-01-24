@@ -15,6 +15,10 @@ public class Jeu {
         id = ++compteur;
     }
 
+    public Jeu(String nom) {
+        this.nom = nom;
+    }
+
     public Jeu(String nom, LocalDate dateSortie) {
         this();
         this.nom = nom;
@@ -25,6 +29,16 @@ public class Jeu {
         this(nom, dateSortie);
         this.editeur = editeur;
         this.plateformes = plateformes;
+    }
+
+    public Jeu(String nom, LocalDate dateSortie, Editeur editeur) {
+        this(nom, dateSortie);
+        this.editeur = editeur;
+    }
+
+    public Jeu(String nom, LocalDate dateSortie, Editeur editeur, Plateforme plateforme) {
+       this(nom,dateSortie,editeur);
+       this.plateformes.add(plateforme);
     }
 
     public Editeur getEditeur() {
@@ -77,7 +91,7 @@ public class Jeu {
 
     @Override
     public String toString() {
-        return "Jeu [nom=" + nom + ", id=" + id + ", dateSortie=" + dateSortie + ", editeur=" + editeur + ", plateformes=" + plateformes + "]";
+        return "nom=" + nom + ", dateSortie=" + dateSortie + ", editeur=" + editeur + ", plateformes=" + plateformes;
     }
-    
+    //  id=" + id + ",
 }

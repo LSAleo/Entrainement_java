@@ -12,6 +12,10 @@ public class Editeur {
         id = ++compteur;
     }
 
+    public Editeur(String nom) {
+        this.nom = nom;
+    }
+
     public Editeur(String nom, ArrayList<Jeu> jeux) {
         this();
         this.nom = nom;
@@ -44,7 +48,7 @@ public class Editeur {
 
     @Override
     public String toString() {
-        return "Editeur [id=" + id + ", nom=" + nom + ", jeux=" + jeux + "]";
+        return "nom=" + nom ;
     }
-
+    // [id=" + id + ", + ", jeux=" + jeux + "]"
 }
