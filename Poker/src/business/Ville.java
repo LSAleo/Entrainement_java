@@ -1,4 +1,4 @@
-package business;
+package Poker.src.business;
 
 public class Ville {
     private String nom;

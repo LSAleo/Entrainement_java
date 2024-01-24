@@ -1,4 +1,4 @@
-package business;
+package Poker.src.business;
 
 public class Couleur {
     // Attribut(s)

@@ -1,6 +1,12 @@
-import business.*;
+package Poker.src;
+
 import java.time.LocalDate;
 import java.util.*;
+
+import Poker.src.business.Carte;
+import Poker.src.business.Couleur;
+import Poker.src.business.Joueur;
+import Poker.src.business.Ville;
 public class App {
 
     private static ArrayList<Ville> villes = new ArrayList<>();

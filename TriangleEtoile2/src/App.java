@@ -1,3 +1,5 @@
+package TriangleEtoile2.src;
+
 public class App {
     public static void main(String[] args) throws Exception {
         for (int i = 0; i < 5; i++){
