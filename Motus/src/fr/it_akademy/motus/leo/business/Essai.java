@@ -24,6 +24,10 @@ public class Essai {
         this.partie = partie;
     }
 
+    public Essai(String motSaisi, Partie partie2) {
+        //TODO Auto-generated constructor stub
+    }
+
     public Long getId() {
         return id;
     }

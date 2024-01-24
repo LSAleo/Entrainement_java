@@ -7,16 +7,31 @@ public class App {
 
     private static int motAleatoire = 0 ;
     private static ArrayList<Mot> mots = new ArrayList<>();
-    static Random random = new Random();
+    private static Random random = new Random();
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         ajouterMots();
         choisirMots();
-        demanderMot();
+        Partie partieEnCours = ajouterPartie();
+        demanderMot(partieEnCours);
     }
 
-    private static void demanderMot() {
+    private static Partie ajouterPartie() {
+        Partie partie = new Partie();
+        partie.setMot(choisirMots());
+        return partie;
+    }
 
+    private static void demanderMot(Partie partie) {
+        System.out.println("Essai 1 : ");
+        String motSaisi = scanner.nextLine();
+        Essai essai = new Essai(motSaisi, partie);
+        // On ajoute un nouvel essai à la partie donnée en paramètre
+        partie.getEssais().add(essai);
+        if (motSaisi.equals(partie.getMot().getNom())) {
+            System.out.println("Bravo !");
+        }
     }
 
     /* 
@@ -32,12 +47,13 @@ public class App {
         }
     } 
     */
-    private static void choisirMots() {
+    private static Mot choisirMots() {
         motAleatoire = 1 + random.nextInt(10);
         motAleatoire = random.nextInt(mots.size()); // Génère un indice aléatoire dans la plage des indices des mots
         Mot motChoisi = mots.get(motAleatoire);
 
         System.out.println("Mot choisi : " + motChoisi.getMot());
+        return motChoisi;
     }
 
 
