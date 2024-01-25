@@ -92,14 +92,19 @@ public class App {
                     System.out.print("_");
                 }
             }
+            StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < motSaisi.length(); i++) {
                 // on teste si le caractère à la position e est présente dans le mot à deviner mais mal placer avec indexOf
-
+                if (partie.getMot().getNom().indexOf(motSaisi.charAt(i)) != -1 && motSaisi.charAt(i) != partie.getMot().getNom().charAt(i)) {
+                    stringBuilder.append(motSaisi.charAt(i));
+                } else {
+                    System.out.println("Lettre présente mais au mauvais endroit : " + motSaisi.charAt(i));
+                }
             }
             return false;            
         }
     }
-    
+
     /* 
     private static void choisirMots() {
 
