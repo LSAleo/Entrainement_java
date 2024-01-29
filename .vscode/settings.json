@@ -4,5 +4,6 @@
         "Jeux/src/fr/it_akademy/jeux",
         "Jeux/src",
         ""
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
