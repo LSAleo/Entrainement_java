@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"fr.it_akademy.voyages.leo.business","l":"Aeroport"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"fr.it_akademy.voyages.leo","l":"App"},{"p":"fr.it_akademy.voyages.leo.business","l":"Compagnie"},{"p":"fr.it_akademy.voyages.leo.business","l":"Vol"}];updateSearchResults();
