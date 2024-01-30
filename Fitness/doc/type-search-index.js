@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"fr.it_akademy.fitness.leo.business","l":"Adherent"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"fr.it_akademy.fitness.leo","l":"App"},{"p":"fr.it_akademy.fitness.leo.business","l":"Course"},{"p":"fr.it_akademy.fitness.leo.business","l":"Tapis"}];updateSearchResults();

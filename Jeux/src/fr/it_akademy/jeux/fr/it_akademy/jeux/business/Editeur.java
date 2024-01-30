@@ -17,8 +17,7 @@ public class Editeur {
     }
 
     public Editeur(String nom, ArrayList<Jeu> jeux) {
-        this();
-        this.nom = nom;
+        this(nom);
         this.jeux = jeux;
     }
 

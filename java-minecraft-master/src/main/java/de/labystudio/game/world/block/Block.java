@@ -62,7 +62,7 @@ public abstract class Block {
     }
 
     public float getOpacity() {
-        return 1.0F;
+        return 10.0F;
     }
 
     public BoundingBox getBoundingBox(IWorldAccess world, int x, int y, int z) {
